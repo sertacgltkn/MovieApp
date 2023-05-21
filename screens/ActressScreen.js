@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, Image, ActivityIndicator, StyleSheet } from "react-native";
 import config from "../config";
-import { styles } from "../styles";
+
 
 const ActressScreen = ({ route }) => {
   const { movie } = route.params;
@@ -43,7 +43,7 @@ const ActressScreen = ({ route }) => {
   if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
-        <Text>Loading cast...</Text>
+        <ActivityIndicator size="large" color="#000000" />
       </View>
     );
   }
@@ -62,5 +62,41 @@ const ActressScreen = ({ route }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: "#FFFFFF",
+  },
+  movieTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  castContainer: {
+    alignItems: "center",
+    marginRight: 10,
+  },
+  castImage: {
+    width: 150,
+    height: 200,
+    borderRadius: 10,
+    marginBottom: 5,
+  },
+  castName: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  castCharacter: {
+    fontSize: 14,
+    color: "#888888",
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default ActressScreen;

@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#CC7E85",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -11,7 +11,9 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
-    marginTop: 16,
+    margin: 16,
+    padding:5,
+    color:'#fff'
   },
   poster: {
     width: 200,
@@ -41,9 +43,11 @@ export const styles = StyleSheet.create({
   },
 
   searchInput: {
-    height: 40,
+    padding:9,
+    margin:5,
     borderWidth: 1,
     borderColor: "#ccc",
+    backgroundColor:"#fff",
     borderRadius: 8,
     paddingHorizontal: 16,
     marginBottom: 16,
@@ -58,9 +62,11 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
   },
   movieTitle: {
-    marginTop: 8,
-    fontSize: 16,
+    margin: 18,
+    padding:25,
+    fontSize: 26,
     fontWeight: "bold",
+    color:'#fff'
   },
   notFoundText: {
     fontSize: 16,
@@ -69,23 +75,22 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   castContainer: {
-    marginVertical: 10,
     alignItems: "center",
   },
   castImage: {
-    width: 200,
-    height: 300,
+    padding:130,
+    margin:2,
     borderRadius: 8,
   },
   castName: {
-    marginTop: 8,
+    margin: 8,
     fontSize: 16,
     fontWeight: "bold",
   },
   castCharacter: {
-    marginTop: 8,
+    margin: 8,
     fontSize: 16,
-    color: "gray",
+    color: "#fff",
   },
   loadingContainer: {
     flex: 1,
