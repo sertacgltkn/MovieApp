@@ -18,22 +18,22 @@ function HomeScreen() {
         <Button
           onPress={() => handleClick("upcoming")}
           title="Upcoming"
-          color={activeScreen === "upcoming" ? "blue" : "gray"}
+          color={activeScreen === "upcoming" ? "#7D4234" : "gray"}
         />
         <Button
           onPress={() => handleClick("popular")}
           title="Popular"
-          color={activeScreen === "popular" ? "blue" : "gray"}
+          color={activeScreen === "popular" ? "#7D4234" : "gray"}
         />
         <Button
           onPress={() => handleClick("nowplaying")}
           title="Now Playing"
-          color={activeScreen === "nowplaying" ? "blue" : "gray"}
+          color={activeScreen === "nowplaying" ? "#7D4234" : "gray"}
         />
         <Button
           onPress={() => handleClick("toprated")}
           title="Top Rated"
-          color={activeScreen === "toprated" ? "blue" : "gray"}
+          color={activeScreen === "toprated" ? "#7D4234" : "gray"}
         />
       </View>
 

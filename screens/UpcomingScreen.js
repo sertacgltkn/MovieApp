@@ -9,7 +9,7 @@ import {
   ScrollView,
   StyleSheet
 } from "react-native";
-import fetchMovies from "../api/fetchMovies";
+import { fetchUpcomingMovies } from "../api/fetchMovies";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { styles } from "../styles";
@@ -24,7 +24,7 @@ const UpcomingScreen = () => {
 
   useEffect(() => {
     const fetchMovieData = async () => {
-      const moviesData = await fetchMovies(); // Update to fetch 40 movies from API or data source
+      const moviesData = await fetchUpcomingMovies(); // Update to fetch 40 movies from API or data source
       const extendedMoviesData = [...moviesData]; // Duplicate the existing movies to increase the list
       setMovies(extendedMoviesData);
       setFilteredMovies(extendedMoviesData);
