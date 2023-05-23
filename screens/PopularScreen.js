@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { View, Text,ScrollView,StatusBar,TextInput,FlatList,TouchableOpacity } from "react-native";
-import { styles } from "../styles";
+import { View, Text,ScrollView,StatusBar,TextInput,FlatList,TouchableOpacity, StyleSheet } from "react-native";
+//import { styles } from "../styles";
 import { fetchPopularMovies } from "../api/fetchMovies";
 import * as Animatable from "react-native-animatable";
 
@@ -75,32 +75,134 @@ function PopularScreen() {
 
   return (
     <ScrollView>
-      <View style={styles.container}>
-        <StatusBar backgroundColor="#CC7E85" barStyle="light-content" />
-        <Text style={styles.title}>Movies</Text>
+    <View style={styles.container}>
+      <StatusBar backgroundColor="#CC7E85" barStyle="light-content" />
+      <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
-          placeholder="Search Movies"
+          placeholder="Search movies..."
+          placeholderTextColor="#fff"
           value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
-        {showNotFound && (
-          <Text style={styles.notFoundText}>Movie not found</Text>
-        )}
-        <FlatList
-          data={filteredMovies}
-          renderItem={renderMovieItem}
-          keyExtractor={(item) => item.id.toString()}
-          numColumns={1} // For a two-column layout, update to 2
-          // ListEmptyComponent={
-          //   !showNotFound && (
-          //     <Text style={styles.notFoundText}>Movie not found</Text>
-          //   )
-          // }
+          onChangeText={(text) => setSearchQuery(text)}
         />
       </View>
-    </ScrollView>
+
+      {showNotFound && (
+        <Animatable.View animation="fadeIn" style={styles.notFoundContainer}>
+          <Text style={styles.notFoundText}>No movies found</Text>
+        </Animatable.View>
+      )}
+      <FlatList
+        data={filteredMovies}
+        renderItem={renderMovieItem}
+        keyExtractor={(item, index) =>
+          item.id.toString() + (searchQuery ? "_searched" : "_not_searched")
+        }
+        numColumns={searchQuery !== "" ? 1 : 2}
+      />
+    </View>
+  </ScrollView>
   );
 }
 
 export default PopularScreen;
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#CC7E85",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 16,
+    padding: 5,
+    color: "#fff",
+  },
+  poster: {
+    width: 200,
+    height: 300,
+    alignSelf: "center",
+    borderRadius: 18,
+    marginTop: 16,
+  },
+  rating: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 8,
+  },
+  description: {
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 8,
+    fontWeight: "bold",
+  },
+  releaseDate: {
+    fontSize: 16,
+    padding: 15,
+    margin: 15,
+    textAlign: "center",
+    marginTop: 8,
+  },
+  button: {
+    backgroundColor: "#FFC947",
+    padding: 10,
+    borderRadius: 10,
+    margin: 10,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  searchContainer: {
+    backgroundColor: "#CC7E85",
+    padding: 10,
+    borderRadius: 10,
+    margin: 10,
+    width: 300,
+  },
+  searchInput: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+    borderColor: "#fff",
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
+  },
+  notFoundContainer: {
+    backgroundColor: "#CC7E85",
+    padding: 10,
+    borderRadius: 10,
+    margin: 10,
+    width: 300,
+  },
+  movieContainer: {
+    backgroundColor: "#CC7E85",
+    padding: 10,
+    borderRadius: 10,
+    margin: 10,
+    width: 150,
+  },
+  movieImage: {
+    width: 150,
+    height: 200,
+    alignSelf: "center",
+    borderRadius: 18,
+    marginTop: 16,
+  },
+  movieTitle: {
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 8,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+});

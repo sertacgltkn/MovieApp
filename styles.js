@@ -16,8 +16,8 @@ export const styles = StyleSheet.create({
     color:'#fff'
   },
   poster: {
-    width: 200,
-    height: 300,
+    width: "55%",
+    height: "50%",
     alignSelf: "center",
     borderRadius: 18,
     marginTop: 16,
