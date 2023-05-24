@@ -15,17 +15,16 @@ const AppNavigator = () => {
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#CC7E85", // Header'ın arka plan rengi
+            backgroundColor: "transparent",
           },
+          headerTransparent: true,
           headerTitleStyle: {
-            color: "white", // Başlık rengi
-            fontSize: 24, // Başlık boyutu
-            textTransform:"uppercase"
-
+            color: "white",
           },
         }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{
+    headerShown: false}} />
         <Stack.Screen name="Upcoming" component={UpcomingScreen} />
         <Stack.Screen name="Popular" component={PopularScreen} />
         <Stack.Screen name="MovieDetails" component={MovieDetailsScreen} />
